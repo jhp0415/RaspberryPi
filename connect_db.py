@@ -2,30 +2,29 @@
 import pymysql
 
 class DroneSQL:
-    conn = None
-    cursor = None
-    def ConnectMySQL(self):
+    #db='INFORM_DRONE_STATUS',
+    #sql = 'SELECT STATUS FROM DRONE_ON_OFF WHERE NAME=MI DRONE'
+    def ConnetDB(self, sql):
         self.conn = pymysql.connect(host='13.125.251.95',
-                               port=3306, user='root',
                                password='cbnuroot123',
+                               port=3306, user='root',
                                db='INFORM_DRONE_STATUS',
                                charset='utf8')
         self.cursor = self.conn.cursor()
-        sql = 'SELECT STATUS FROM DRONE_ON_OFF WHERE NAME=%s'
-        self.cursor.execute(sql, ('MI DRONE'))
-        print("db에 연결합니다.")
+        #sql = 'SELECT STATUS FROM DRONE_ON_OFF WHERE NAME="MI DRONE"'
+        self.cursor.execute(sql)
+        #print("db에 연결합니다.")
         return
 
-    def getOnOffOne(self):
+    def getOne(self):
         result = self.cursor.fetchone()
         return result
 
-    def getOnOffAll(self):
+    def getAll(self):
         result = self.cursor.fetchall()
         return result
 
-    def DisconnectMySQL(self):
-        print("db 종료합니다")
+    def DisconnetDB(self):
         self.cursor.close()
         self.conn.close()
         return
