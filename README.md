@@ -1,4 +1,4 @@
-# RaspberryPi
+# RaspberryPi-Drone
 Project using RaspberryPi and Drone
 라즈베리파이3와 드론을 이용한 프로젝트 입니다.
 
